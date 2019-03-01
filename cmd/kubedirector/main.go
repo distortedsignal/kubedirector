@@ -64,7 +64,7 @@ func main() {
 
 	go func() {
 		logrus.Infof("Starting admission validation server")
-		validator.StartValidationServer(handler)
+		validator.StartValidationServer(handlerId)
 	}()
 
 	type watchInfo struct {
@@ -94,6 +94,6 @@ func main() {
 		logrus.Infof("Watching %s, %s, %s, %d", resource, w.kind, namespace, w.resyncPeriod)
 		sdk.Watch(resource, w.kind, namespace, w.resyncPeriod)
 	}
-	sdk.Handle(handler)
+	sdk.Handle(handlerId)
 	sdk.Run(context.TODO())
 }
