@@ -52,7 +52,7 @@ func main() {
 	}
 	kd, err := observer.GetDeployment(kdName)
 	if err != nil {
-		logrus.Fatalf("failed to get kubedirector deployment object: %v", err)
+		logrus.Fatalf(            "failed to get kubedirector deployment object: %v", err)
 	}
 
 	err = validator.InitValidationServer(*metav1.NewControllerRef(kd, kd.GroupVersionKind()))
@@ -60,7 +60,7 @@ func main() {
 		logrus.Fatalf("failed to initialize validation server: %v", err)
 	}
 
-	handler := reconciler.NewHandler()
+	handlerId := reconciler.NewHandler()
 
 	go func() {
 		logrus.Infof("Starting admission validation server")
